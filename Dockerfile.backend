@@ -1,0 +1,40 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+    
+RUN apt-get install -y --no-install-recommends \
+      software-properties-common \
+      git \
+      curl \
+      python3 \
+      python3-pip
+
+RUN add-apt-repository -y ppa:apptainer/ppa
+
+RUN apt-get install -y --no-install-recommends apptainer
+RUN rm -rf /var/lib/apt/lists/*
+
+WORKDIR /srv
+
+# Clone RFdiffusion2 and copy main.py in later layer to use cache on repeated builds
+RUN git clone https://github.com/RosettaCommons/RFdiffusion2
+
+# Copy backend main.py from context root if present
+COPY main.py /srv/main.py
+
+WORKDIR /srv/RFdiffusion2
+
+# Minimal python deps for serving API
+RUN pip3 install --no-cache-dir fastapi uvicorn
+
+# If RFdiffusion2 requires setup script, run it (non-fatal if missing)
+RUN if [ -f setup.py ]; then python3 setup.py || true; fi
+
+WORKDIR /srv
+
+EXPOSE 8000
+
+CMD ["sh", "-lc", "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"]
+
+

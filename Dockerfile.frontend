@@ -1,15 +1,14 @@
 FROM node:20-alpine
 
 WORKDIR /app
-
-COPY package.json package-lock.json ./
+COPY ./drylab-tools-frontend/package.json ./drylab-tools-frontend/package-lock.json ./
 RUN npm ci
 
-COPY . .
-
+COPY ./drylab-tools-frontend/ .
+RUN ls -la
 ENV HOST=0.0.0.0
 EXPOSE 3000
 
-CMD ["sh", "-lc", "npm run dev"]
+CMD ["sh", "-lc", "ls -la && npm run dev"]
 
 

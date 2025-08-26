@@ -78,14 +78,3 @@ sudo docker compose up --build
 - Repo: `https://github.com/RosettaCommons/RFdiffusion2`
 - In this stack, the backend container clones the repository so you can wire its pipelines later (e.g., via Apptainer/Singularity). The provided FastAPI app demonstrates job orchestration, logs, file trees, and previews; you can replace the demo logic with real RFdiffusion2 invocations as you integrate.
 
-### Useful commands
-
-- Start/attach: `sudo docker compose up`
-- Rebuild: `sudo docker compose up --build`
-- Stop: `sudo docker compose down`
-
-### Troubleshooting
-
-- If you see apt/GPG errors during backend build, re‑run with `--build`. Network/mirror hiccups are the usual cause. You can also retry later or switch base mirrors if needed.
-
-

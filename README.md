@@ -8,25 +8,14 @@ Spin up a minimal FastAPI backend and a Next.js frontend wired together, with RF
 sudo docker compose up
 ```
 
-- Builds both services if needed and starts:
-  - Backend on `http://localhost:8000`
-  - Frontend on `http://localhost:3000`
-
-Tip: First run or when you change Dockerfiles, use:
-
-```bash
-sudo docker compose up --build
-```
-
 ### What you get
 
 - Backend (FastAPI)
-  - Serves simple job APIs (submit, list, details, logs, file tree, downloads)
   - Clones `RFdiffusion2` during image build for future integration
   - Default command: `uvicorn main:app --host 0.0.0.0 --port 8000`
 
 - Frontend (Next.js)
-  - UI to submit jobs, see results, preview PDB in Mol* viewer, view logs, and download outputs
+  - Hosted on http://localhost:3000
   - Talks to backend via `BACKEND_URL` (compose sets this to `http://backend:8000`)
 
 ### Directory layout (key files)

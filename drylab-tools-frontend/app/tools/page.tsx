@@ -82,9 +82,6 @@ export default function Page() {
       {/* Header */}
       <div className="flex flex-col gap-2 w-[910px]">
         <h1 className="text-[24px] font-medium text-black">RFdiffusion2</h1>
-        <p className="text-[16px] text-[#484646] tracking-[0.5px]">
-          In in-silico Motif Enzyme benchmarking spannign EC 1-5, produced at least one success for 41/41 cases vs 16/41 for prior RFdiffusion
-        </p>
       </div>
 
       {/* Backend URL + Job name */}

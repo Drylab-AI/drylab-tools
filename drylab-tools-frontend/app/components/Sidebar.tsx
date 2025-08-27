@@ -12,7 +12,7 @@ export default function Spidebar() {
 
   return (
     <div className="w-60 bg-[#FBFBFB] border-r h-screen p-3 sideBar">
-      <div className="text-xl font-semibold px-2 py-3 logoText">Drylab</div>
+      <div className="text-xl font-semibold px-2 py-3 logoText" onClick={() => window.location.href = 'https://thedrylab.com'}>Drylab</div>
       <nav className="space-y-1">
         <Link
           href="/tools"
@@ -29,6 +29,9 @@ export default function Spidebar() {
           Results
         </Link>
       </nav>
+      <div className="mt-6 px-3 text-xs text-gray-500">
+        Maintained by team from <a href="https://thedrylab.com" className="text-blue-500">The Drylab</a>
+      </div>
     </div>
   )
 }

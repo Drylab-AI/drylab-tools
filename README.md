@@ -5,7 +5,7 @@ Spin up a minimal FastAPI backend and a Next.js frontend wired together, with RF
 ### One‑liner start
 
 ```bash
-sudo docker compose up
+sh run.sh
 ```
 
 ### What you get

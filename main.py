@@ -186,7 +186,7 @@ async def simulate_job(jid: str):
     pdb_data = param["pdb_data"]
     
     # dummy:
-    with open("/home/clouduser/agentic-vl/RFdiffusion2/rf_diffusion/benchmark/input/mcsa_41/M0584_1ldm.pdb", "r") as f:
+    with open("RFdiffusion2/rf_diffusion/benchmark/input/mcsa_41/M0584_1ldm.pdb", "r") as f:
         pdb_data = f.read()
     
     try:
@@ -280,10 +280,10 @@ async def simulate_job(jid: str):
 
         env = os.environ.copy()
         env.setdefault("REPO_ROOT", repo_root)
-        pipeline_path = "/home/clouduser/agentic-vl/RFdiffusion2/rf_diffusion/benchmark/pipeline.py"
+        pipeline_path = "REPO_ROOT/rf_diffusion/benchmark/pipeline.py"
         cmd = [
             "apptainer", "exec", "--nv",
-            "/home/clouduser/agentic-vl/RFdiffusion2/rf_diffusion/exec/bakerlab_rf_diffusion_aa.sif",
+            "REPO_ROOT/RFdiffusion2/rf_diffusion/exec/bakerlab_rf_diffusion_aa.sif",
             pipeline_path,
             f"--config-name={os.path.splitext(yaml_name)[0]}",
             f"sweep.benchmarks={bench_key}",

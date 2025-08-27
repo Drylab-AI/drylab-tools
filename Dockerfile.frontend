@@ -9,6 +9,5 @@ RUN ls -la
 ENV HOST=0.0.0.0
 EXPOSE 3000
 
-CMD ["sh", "-lc", "ls -la && npm run dev"]
 
-
+CMD ["sh", "-lc", "ls -la && npm run build && npm run start"]

@@ -186,8 +186,8 @@ async def simulate_job(jid: str):
     pdb_data = param["pdb_data"]
     
     # dummy:
-    with open("RFdiffusion2/rf_diffusion/benchmark/input/mcsa_41/M0584_1ldm.pdb", "r") as f:
-        pdb_data = f.read()
+    # with open("rf_diffusion/benchmark/input/mcsa_41/M0584_1ldm.pdb", "r") as f:
+    #     pdb_data = f.read()
     
     try:
         workdir = tempfile.mkdtemp(prefix=f"{jid}_")
@@ -260,7 +260,7 @@ async def simulate_job(jid: str):
             "  command_args: >",
             "    --config-name=aa",
             "    inference.deterministic=True",
-            "    inference.ckpt_path=REPO_ROOT/rf_diffusion/model_weights/RFD_173.pt",
+            "    inference.ckpt_path=/srv/RFdiffusion2/rf_diffusion/model_weights/RFD_173.pt",
             "    inference.seed_offset=43",
             "",
             "  num_per_condition: 1",
@@ -280,10 +280,12 @@ async def simulate_job(jid: str):
 
         env = os.environ.copy()
         env.setdefault("REPO_ROOT", repo_root)
-        pipeline_path = "REPO_ROOT/rf_diffusion/benchmark/pipeline.py"
+        pipeline_path = "rf_diffusion.benchmark.pipeline"
         cmd = [
-            "apptainer", "exec", "--nv",
-            "REPO_ROOT/RFdiffusion2/rf_diffusion/exec/bakerlab_rf_diffusion_aa.sif",
+            # "apptainer", "exec", "--nv",
+            # "rf_diffusion/exec/bakerlab_rf_diffusion_aa.sif",
+            "/root/miniconda3/envs/python11/bin/python",
+            "-m",
             pipeline_path,
             f"--config-name={os.path.splitext(yaml_name)[0]}",
             f"sweep.benchmarks={bench_key}",

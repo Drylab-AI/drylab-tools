@@ -1,4 +1,4 @@
-git clonehttps://github.com/JohnToro-CZAF/RFdiffusion2
+git clone https://github.com/JohnToro-CZAF/RFdiffusion2
 cp download_weights.py RFdiffusion2/
 cd RFdiffusion2
 python download_weights.py

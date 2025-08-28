@@ -1,6 +1,9 @@
 ## Drylab Tools - RosettaDiffusion2, ...
 
-Spin up a minimal FastAPI backend and a Next.js frontend wired together, with RFdiffusion2 cloned into the backend image for future protein design workflows.
+Spin up a minimal FastAPI backend and a Next.js frontend wired together, with RFdiffusion2 cloned into the backend image for future protein design workflows made by Drylab team https://www.thedrylab.com/
+
+
+![demo_image](https://github.com/user-attachments/assets/784e83f9-cfad-4720-943a-ad2042e92b04)
 
 ### One‑liner start
 

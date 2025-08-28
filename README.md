@@ -1,4 +1,4 @@
-## Drylab Tools – Dev Stack (Backend + Frontend)
+## Drylab Tools - RosettaDiffusion2, ...
 
 Spin up a minimal FastAPI backend and a Next.js frontend wired together, with RFdiffusion2 cloned into the backend image for future protein design workflows.
 
@@ -8,28 +8,7 @@ Spin up a minimal FastAPI backend and a Next.js frontend wired together, with RF
 sh run.sh
 ```
 
-### What you get
-
-- Backend (FastAPI)
-  - Clones `RFdiffusion2` during image build for future integration
-  - Default command: `uvicorn main:app --host 0.0.0.0 --port 8000`
-
-- Frontend (Next.js)
-  - Hosted on http://localhost:3000
-  - Talks to backend via `BACKEND_URL` (compose sets this to `http://backend:8000`)
-
-### Directory layout (key files)
-
-```
-drylab_tools/
-  docker-compose.yml
-  Dockerfile.backend
-  Dockerfile.frontend
-  main.py                  # FastAPI app (edit here to add tools/endpoints)
-  drylab-tools-frontend/   # Next.js app (edit UI/APIs here)
-```
-
-The backend image clones `RFdiffusion2/` during build, so it will be present inside the backend container.
+I am adding more tools like Chai1, or Boltz2, ... for everyone access. But there are tons out there, might need your help.
 
 ### Adding your own tools
 
@@ -60,10 +39,7 @@ Restart to pick up changes:
 sudo docker compose up --build
 ```
 
-### About RFdiffusion2
+### About integrated tools
 
 `RFdiffusion2` (from RosettaCommons) is a diffusion‑based framework for protein design and enzyme engineering.
-
 - Repo: `https://github.com/RosettaCommons/RFdiffusion2`
-- In this stack, the backend container clones the repository so you can wire its pipelines later (e.g., via Apptainer/Singularity). The provided FastAPI app demonstrates job orchestration, logs, file trees, and previews; you can replace the demo logic with real RFdiffusion2 invocations as you integrate.
-
